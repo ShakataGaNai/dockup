@@ -1,7 +1,7 @@
 
 # Dockup
 
-[![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
+Forked because their docker file was out of date and didn't work.
 
 Docker image to backup your Docker container volumes
 
