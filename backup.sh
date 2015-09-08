@@ -1,18 +1,13 @@
 #!/bin/bash
 
-# Get timestamp
-: ${BACKUP_SUFFIX:=.$(date +"%Y-%m-%d-%H-%M-%S")}
+: ${BACKUP_SUFFIX:=.$(date '+%d')}
 readonly tarball=$BACKUP_NAME$BACKUP_SUFFIX.tar.gz
-
-# Create a gzip compressed tarball with the volume(s)
-tar czf $tarball $BACKUP_TAR_OPTION $PATHS_TO_BACKUP
 
 # Create bucket, if it doesn't already exist
 BUCKET_EXIST=$(aws s3 ls | grep $S3_BUCKET_NAME | wc -l)
-if [ $BUCKET_EXIST -eq 0 ]; 
-then
+if [ $BUCKET_EXIST -eq 0 ]; then
   aws s3 mb s3://$S3_BUCKET_NAME
 fi
 
-# Upload the backup to S3 with timestamp
-aws s3 cp $tarball s3://$S3_BUCKET_NAME/$tarball
+# tar and send to s3 without writing it all out to disk.
+tar cz $BACKUP_TAR_OPTION $PATHS_TO_BACKUP | aws s3 cp - s3://$S3_BUCKET_NAME/$tarball
