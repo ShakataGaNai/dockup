@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 MAINTAINER Jon Davis <jon@snowulf.com>
 
-RUN apt-get update && apt-get install -y python-pip && pip install awscli
+RUN apt-get update && apt-get install -y python-pip dnsutils && pip install awscli
 
 ADD backup.sh /backup.sh
 ADD restore.sh /restore.sh
