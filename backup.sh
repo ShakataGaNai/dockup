@@ -1,5 +1,7 @@
 #!/bin/bash
 echo "Running backup"
+pip --version
+aws --version 
 
 # Filename
 : ${BACKUP_SUFFIX:=.$(date '+%d')}
