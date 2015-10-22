@@ -10,4 +10,4 @@ if [ $BUCKET_EXIST -eq 0 ]; then
 fi
 
 # tar and send to s3 without writing it all out to disk.
-tar cz $BACKUP_TAR_OPTION $PATHS_TO_BACKUP | aws s3 cp - s3://$S3_BUCKET_NAME/$tarball
+tar cz $BACKUP_TAR_OPTION $PATHS_TO_BACKUP | aws s3 cp --storage-class STANDARD_IA - s3://$S3_BUCKET_NAME/$tarball
