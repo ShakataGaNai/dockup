@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Running backup"
 
 # Filename
 : ${BACKUP_SUFFIX:=.$(date '+%d')}
