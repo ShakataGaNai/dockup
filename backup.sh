@@ -1,10 +1,12 @@
 #!/bin/bash
-echo "Running backup"
+echo "Diagnostic Information"
 pip --version
-aws --version 
+aws --version
+dig s3.amazonaws.com
+echo "Starting backup"
 
 # Filename
-: ${BACKUP_SUFFIX:=.$(date '+%d')}
+: ${BACKUP_SUFFIX:=.$(date +"%Y-%m-%d-%H-%M-%S")}
 readonly tarball=$BACKUP_NAME$BACKUP_SUFFIX.tar.gz
 
 # Create bucket, if it doesn't already exist

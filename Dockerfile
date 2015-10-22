@@ -1,5 +1,5 @@
-FROM ubuntu:trusty
-MAINTAINER Borja Burgos <borja@tutum.co>, Mia Iversen <mia@chillfox.com>
+FROM ubuntu:latest
+MAINTAINER Jon Davis <jon@snowulf.com>
 
 RUN apt-get update && apt-get install -y python-pip && pip install awscli
 
@@ -8,7 +8,7 @@ ADD restore.sh /restore.sh
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
 
-ENV S3_BUCKET_NAME docker-backups.example.com
+ENV S3_BUCKET_NAME docker-backups-sample
 ENV AWS_ACCESS_KEY_ID **DefineMe**
 ENV AWS_SECRET_ACCESS_KEY **DefineMe**
 ENV AWS_DEFAULT_REGION us-east-1
