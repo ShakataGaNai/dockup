@@ -1,5 +1,5 @@
 dockup:
-  image: 'tutum/dockup:latest'
+  image: 'shakataganai/dockup:latest'
   autodestroy: always
   environment:
     - AWS_ACCESS_KEY_ID=<key_here> #MUST CHANGE THIS
